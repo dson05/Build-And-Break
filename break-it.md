@@ -6,17 +6,17 @@ and attack another team's system. You get to select a target, but you
 
 When the break-it phase begins, some of the build-it repositories will
 be made available for you to clone. You may find these at
-https://gitlab.cs.umd.edu/search?utf8=%E2%9C%93&search=p4-atm, which
+https://gitlab.cs.umd.edu/search?utf8=%E2%9C%93&search=buildit-breakit, which
 should return a list of search results for repositories matching
-"p4-atm". Make sure you select one that is under `cmsc414-dave/spring25/teams`.
+"buildit-breakit". Make sure you select one that is under `cmsc414-kaptchuk/spring26/teams`.
 If you want to download multiple potential targets before deciding on
 one, we recommend doing it with a command like (for a hypothetical team
 named "AwesomeTeam"):
 
-    git clone https://gitlab.cs.umd.edu/cmsc414-dave/spring25/teams/AwesomeTeam/p4-atm AwesomeTeam
+    git clone https://gitlab.cs.umd.edu/cmsc414-dave/spring25/teams/AwesomeTeam/buildit-breakit AwesomeTeam
 
 This will clone the target team's repository into a directory named
-`AwesomeTeam`, rather than `p4-atm`.
+`AwesomeTeam`, rather than `buildit-breakit`.
 
 
 ## Rules of Engagement
