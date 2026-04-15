@@ -13,7 +13,7 @@ If you want to download multiple potential targets before deciding on
 one, we recommend doing it with a command like (for a hypothetical team
 named "AwesomeTeam"):
 
-    git clone https://gitlab.cs.umd.edu/cmsc414-dave/spring25/teams/AwesomeTeam/buildit-breakit AwesomeTeam
+    git clone https://gitlab.cs.umd.edu/cmsc414-kaptchuk/spring26/teams/AwesomeTeam/buildit-breakit AwesomeTeam
 
 This will clone the target team's repository into a directory named
 `AwesomeTeam`, rather than `buildit-breakit`.
