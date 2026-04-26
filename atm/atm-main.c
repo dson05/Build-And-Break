@@ -1,29 +1,49 @@
-/* 
- * The main program for the ATM.
- *
- * You are free to change this as necessary.
- */
-
-#include "atm.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "atm.h"
 
-static const char prompt[] = "ATM: ";
+int main(int argc, char **argv) {
 
-int main()
-{
     char user_input[1000];
+    FILE *init_file;
+    ATM *atm;
 
-    ATM *atm = atm_create();
+    /* require a readable init file */
+    if (argc != 2) {
+        printf("Error opening ATM initialization file\n");
+        return 64;
+    }
 
-    printf("%s", prompt);
+    init_file = fopen(argv[1], "r");
+    if (init_file == NULL) {
+        printf("Error opening ATM initialization file\n");
+        return 64;
+    }
+    
+    fclose(init_file);
+
+    atm = atm_create();
+
+    if (atm->logged_in) {
+        printf("ATM (%s):  ", atm->current_user);
+    }
+    else {
+        printf("ATM: ");
+    }
     fflush(stdout);
 
-    while (fgets(user_input, 10000,stdin) != NULL)
-    {
+    /* process commands until stdin is done */
+    while (fgets(user_input, sizeof(user_input), stdin) != NULL) {
         atm_process_command(atm, user_input);
-        printf("%s", prompt);
+        if (atm->logged_in) {
+            printf("ATM (%s):  ", atm->current_user);
+        }
+        else {
+            printf("ATM: ");
+        }
         fflush(stdout);
     }
+
+    atm_free(atm);
 	return EXIT_SUCCESS;
 }
