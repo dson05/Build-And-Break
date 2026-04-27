@@ -22,16 +22,16 @@ Router* router_create()
     router->rtr_addr.sin_port=htons(ROUTER_PORT);
     bind(router->sockfd,(struct sockaddr *)&router->rtr_addr,sizeof(router->rtr_addr));
 
-    // Initialize Bank's address
+    // Initialize Bank's address (loopback so sendto works on macOS as well as Linux)
     bzero(&router->bank_addr,sizeof(router->bank_addr));
     router->bank_addr.sin_family = AF_INET;
-    router->bank_addr.sin_addr.s_addr=htonl(INADDR_ANY);
+    router->bank_addr.sin_addr.s_addr=inet_addr("127.0.0.1");
     router->bank_addr.sin_port=htons(BANK_PORT);
 
     // Initialize ATM's address
     bzero(&router->atm_addr,sizeof(router->atm_addr));
     router->atm_addr.sin_family = AF_INET;
-    router->atm_addr.sin_addr.s_addr=htonl(INADDR_ANY);
+    router->atm_addr.sin_addr.s_addr=inet_addr("127.0.0.1");
     router->atm_addr.sin_port=htons(ATM_PORT);
 
     return router;

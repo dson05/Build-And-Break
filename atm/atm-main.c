@@ -5,7 +5,6 @@
 int main(int argc, char **argv) {
 
     char user_input[1000];
-    FILE *init_file;
     ATM *atm;
 
     /* require a readable init file */
@@ -14,15 +13,13 @@ int main(int argc, char **argv) {
         return 64;
     }
 
-    init_file = fopen(argv[1], "r");
-    if (init_file == NULL) {
+    atm = atm_create();
+    if (!atm_load_key(atm, argv[1])) {
+
+        atm_free(atm);
         printf("Error opening ATM initialization file\n");
         return 64;
     }
-    
-    fclose(init_file);
-
-    atm = atm_create();
 
     if (atm->logged_in) {
         printf("ATM (%s):  ", atm->current_user);
@@ -45,5 +42,5 @@ int main(int argc, char **argv) {
     }
 
     atm_free(atm);
-	return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
